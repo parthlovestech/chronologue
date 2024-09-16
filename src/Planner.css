@@ -1,0 +1,150 @@
+.planner-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .task-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .task-input-container input,
+  .task-input-container select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .task-input-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    flex: 0;
+  }
+  
+  .task-input-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .filter-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .task-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .task-item.completed {
+    background-color: #e0ffe0;
+  }
+  
+  .task-details {
+    margin-bottom: 10px;
+  }
+  
+  .task-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .task-actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .complete-button {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .complete-button:hover {
+    background-color: #218838;
+  }
+  
+  .edit-button {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .edit-button:hover {
+    background-color: #e0a800;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .edit-task {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .save-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .go-back-button {
+    background-color: red;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .go-back-button:hover {
+    background-color: #e0e0e0;
+  }
+  

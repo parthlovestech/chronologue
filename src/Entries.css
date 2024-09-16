@@ -1,0 +1,172 @@
+/* General Container */
+.entries-container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Styles */
+  .entries-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .entries-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+  }
+  
+  /* Entries List */
+  .entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .entry-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+  }
+  
+  .entry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .entry-card h2 {
+    font-size: 1.6rem;
+    color: #1e1e1e;
+    margin: 0 0 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+  }
+  
+  .entry-card p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .entry-date {
+    display: block;
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  /* Add Entry Section */
+  .add-entry {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-entry input,
+  .add-entry textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .add-entry input:focus,
+  .add-entry textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Add Entry Button */
+  .add-entry button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .add-entry button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-content h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #1e1e1e;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+  }
+  
+  .modal-content p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .modal-date {
+    display: block;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .modal-content button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .modal-content button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
