@@ -105,7 +105,7 @@ const Planner = () => {
   return (
     <div className="planner-container">
       <button onClick={() => navigate(-1)} className="go-back-button">Go Back</button>
-      <h1>Planner</h1>
+      <h1>Assessments</h1>
       <div className="task-input-container">
         <input
           type="text"

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import Home from './Home';
-import Entries from './Entries';
+import Exams from './Exams'
 import Planner from './Planner';
-import Expenses from './Expenses';
+import Expense from './Expense';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -19,11 +19,12 @@ const App = () => {
         ) : (
           <>
             {/* Routes for authenticated users */}
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/entries" element={<Entries />} />
+            <Route path="/exams" element={<Exams />} />
             <Route path="/planner" element={<Planner />} />
-            <Route path="/expenses" element={<Expenses />} />
+            <Route path="/expense" element={<Expense />} />
           </>
         )}
       </Routes>

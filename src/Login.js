@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "./firebaseConfig";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import './Login.css'; // Import your CSS
@@ -9,12 +10,14 @@ const Login = ({ setUser }) => {
   const [confirmPassword, setConfirmPassword] = useState(""); // Add confirm password state
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = async () => {
     setError("");
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
+      navigate("/home"); // Redirect to home page on successful login
     } catch (error) {
       setError("Login failed: " + error.message);
     }
@@ -29,6 +32,7 @@ const Login = ({ setUser }) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
+      navigate("/home"); // Redirect to home page on successful sign up
     } catch (error) {
       setError("Sign up failed: " + error.message);
     }

@@ -1,0 +1,300 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Varela Round', sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Container */
+.exams-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh; /* Full viewport height */
+  box-sizing: border-box;
+}
+
+/* Header */
+.exams-header {
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.exams-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #343a40;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent filters from shrinking */
+}
+
+.filters select,
+.filters input {
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 200px;
+}
+
+.filters select:hover,
+.filters input:hover {
+  border-color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Exam List Container */
+.exams-list-container {
+  flex: 1; /* Allow this section to grow and fill available space */
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 100%;
+}
+
+/* Exam List */
+.exams-list {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 40px;
+}
+
+/* Exam Card */
+.exam-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exam-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.exam-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+.exam-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 8px 0;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.upcoming {
+  color: #28a745; /* Green */
+}
+
+.status.completed {
+  color: #dc3545; /* Red */
+}
+
+/* Delete Button */
+.delete-button {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.delete-button:hover {
+  color: black;
+  transform: scale(1.1);
+}
+
+.delete-button i {
+  margin-right: 8px;
+}
+
+/* Add Exam Section */
+.add-exam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.add-exam select,
+.add-exam input,
+.add-exam textarea {
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  color: #333;
+  padding: 12px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-exam select:hover,
+.add-exam input:hover,
+.add-exam textarea:hover {
+  border-color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-exam button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.add-exam button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  height: 120px; /* Adjust height for better usability */
+}
+
+.expense-container {
+  padding: 20px;
+}
+
+.expense-header {
+  text-align: center;
+}
+
+.expense-inputs {
+  margin-bottom: 20px;
+}
+
+.expense-inputs input,
+.expense-inputs button {
+  margin: 5px;
+}
+
+.expense-sorting {
+  margin-bottom: 20px;
+}
+
+.expense-chart {
+  margin-bottom: 20px;
+}
+
+.expense-list {
+  margin-top: 20px;
+}
+
+.expense-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: table; /* Use table display for layout */
+  width: 100%; /* Full width for the card */
+}
+
+.table-row {
+  display: table-row; /* Row for the table */
+}
+
+.table-cell {
+  display: table-cell; /* Cell for the table */
+  padding: 10px; /* Padding inside cells */
+}
+
+.description {
+  width: 50%; /* Adjust width as needed */
+}
+
+.amount-date {
+  width: 50%; /* Adjust width as needed */
+  text-align: right; /* Align text to the right */
+}
+
+.expense-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #343a40;
+}
+
+.expense-card p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #495057;
+}
+
+.amount {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.date {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.expense-calculator {
+  margin-top: 20px;
+}
+
+.expense-calculator input,
+.expense-calculator button {
+  margin: 5px;
+}
+
+.calculator-result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.expense-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
