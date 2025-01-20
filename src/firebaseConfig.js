@@ -9,7 +9,7 @@ const firebaseConfig = {
   storageBucket: "chronologue-c1217.appspot.com",
   messagingSenderId: "806536083160",
   appId: "1:806536083160:web:55b5ee0ea1efb4184d49ad",
-  measurementId: "G-S45467VMKL" // Measurement ID is optional
+  measurementId: "G-S45467VMKL" 
 };
 
 // Initialize Firebase

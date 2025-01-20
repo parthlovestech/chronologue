@@ -1,150 +1,392 @@
 /* General Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Light background for a professional feel */
+  color: #333; /* Subtle dark gray text for readability */
+}
+
 .expense-container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #ffffff; /* White background for clean look */
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  overflow-y: auto;
+}
+
+/* Expense Header Title */
+.expense-header h1 {
+  font-size: 2.5rem; /* Increased font size for better visibility */
+  color: #ffffff; /* White text for contrast */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center; /* Center the title */
+  background-color: #80a7d1; /* Blue background */
+  padding: 10px 20px; /* Add padding to make the background more prominent */
+  border-radius: 5px; /* Optional: Add rounded corners to the background */
+  text-transform: uppercase; /* Optional: Makes the title more striking */
+}
+
+
+.expense-header h1 {
+  font-size: 2.5rem; /* Increased font size for better visibility */
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Balance Overview */
+.balance-overview {
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.balance-header h2 {
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #555;
+  font-family: 'Roboto', sans-serif;
+}
+
+.balance-item {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #333;
+  font-family: 'Inter', sans-serif;
+}
+
+.balance-item span {
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.balance-amount {
+  font-size: 1.8rem; /* Slightly larger font size for the balance */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #007bff;
+  font-family: 'Inter', sans-serif;
+}
+
+.balance-amount i {
+  margin-right: 10px;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.balance-amount.positive {
+  color: #28a745; /* Green for positive balance */
+}
+
+.balance-amount.negative {
+  color: #dc3545; /* Red for negative balance */
+}
+
+.balance-input {
+  width: 200px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Expense Inputs */
+.expense-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.expense-inputs input,
+.expense-inputs button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-family: 'Inter', sans-serif;
+}
+
+.expense-inputs input {
+  width: 200px;
+}
+
+.expense-inputs button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.expense-inputs button:hover {
+  background-color: #0056b3;
+}
+
+/* Sorting Dropdown */
+.expense-sorting {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.expense-sorting select {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f7f7f7;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Chart */
+.expense-chart {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+/* Transaction History */
+.transaction-history {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 30px;
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #555;
+  font-family: 'Inter', sans-serif;
+}
+
+.transaction-item:hover {
+  background-color: #f1f1f1;
+}
+
+.transaction-item .transaction-desc {
+  flex: 1;
+  text-align: left;
+}
+
+.transaction-item .transaction-date {
+  text-align: center;
+}
+
+.transaction-item .transaction-amount {
+  text-align: right;
+  font-weight: 600;
+  color: #007bff;
+}
+
+/* Back Button */
+.back-go-button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-go-button:hover {
+  background-color: #0056b3;
+}
+
+.back-go-button i {
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .expense-inputs {
     flex-direction: column;
     align-items: center;
-    padding: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100vh; /* Full viewport height */
-    box-sizing: border-box;
-    background-color: #f7f9fc;
   }
-  
-  /* Header */
-  .expense-header {
-    flex-shrink: 0; /* Prevent header from shrinking */
-  }
-  
-  .expense-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #343a40;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-bottom: 3px solid #007bff; /* Blue underline */
-    padding-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* Inputs */
-  .expense-inputs {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .expense-inputs input {
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 8px;
-    font-size: 1rem;
-    width: 200px;
-  }
-  
+
+  .expense-inputs input,
   .expense-inputs button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .expense-inputs button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Sorting */
-  .expense-sorting {
-    margin-bottom: 30px;
-  }
-  
-  .expense-sorting select {
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-  
-  /* Chart */
-  .expense-chart {
     width: 100%;
-    max-width: 900px;
-    margin-bottom: 30px;
   }
-  
-  .expense-calculator {
-    margin-top: 30px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f7f9fc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .expense-calculator input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #007bff;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  .expense-calculator input:hover {
-    border-color: #0056b3;
-  }
-  
-  .expense-calculator button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .expense-calculator button:hover {
-    background-color: #0056b3;
-  }
-  
-  .calculator-result {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-/* Add styles for the new back-go-button class */
-.back-go-button {
-    background-color: #007bff;
-    border: none;
-    border-radius: 50%;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.2rem;
-    height: 40px;
-    width: 40px;
-    display: flex;
+
+  .balance-item {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 10px;
-    left: 10px;
   }
-  
-  .back-go-button:hover {
-    background-color: #0056b3;
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
-  
-  .back-go-button i {
-    font-size: 1.2rem;
-  }
-  
-  
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Transaction History */
+.expense-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.expense-list h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Expense Card */
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ecf0f1;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.expense-card:hover {
+  background-color: #f7f7f7;
+  transform: translateY(-2px);
+}
+
+.transaction-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.transaction-desc {
+  font-size: 1.2rem;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.transaction-date {
+  font-size: 1rem;
+  color: #95a5a6;
+  margin-top: 5px;
+}
+
+.transaction-amount {
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.transaction-amount.positive {
+  color: #27ae60; /* Green for positive */
+}
+
+.transaction-amount.negative {
+  color: #e74c3c; /* Red for negative */
+}
+
+.transaction-amount i {
+  font-size: 1.7rem;
+}
+
+/* Icons */
+.transaction-amount i {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* No Transactions Message */
+.no-transactions {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* Styling for Icon-based Transaction Cards */
+.transaction-icon {
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #ecf0f1;
+  color: #3498db;
+  transition: background-color 0.3s ease;
+}
+
+.transaction-icon.expense {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.transaction-icon.income {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.transaction-icon:hover {
+  background-color: #bdc3c7;
+}

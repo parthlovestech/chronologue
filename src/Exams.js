@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Exams.css';
 
@@ -12,16 +12,7 @@ const subjects = [
 ];
 
 const Exams = () => {
-  const [exams, setExams] = useState(() => {
-    try {
-      const savedExams = localStorage.getItem('exams');
-      return savedExams ? JSON.parse(savedExams) : [];
-    } catch (error) {
-      console.error('Failed to parse exams from localStorage:', error);
-      return [];
-    }
-  });
-
+  const [exams, setExams] = useState([]);
   const [newSubject, setNewSubject] = useState(subjects[0]);
   const [newDeadline, setNewDeadline] = useState('');
   const [newDetails, setNewDetails] = useState('');
@@ -30,8 +21,28 @@ const Exams = () => {
   const [sortOrder, setSortOrder] = useState('date');
   const navigate = useNavigate();
 
+  // Load exams from localStorage when component mounts
+  useEffect(() => {
+    try {
+      const savedExams = localStorage.getItem('exams');
+      if (savedExams) {
+        setExams(JSON.parse(savedExams));
+      }
+    } catch (error) {
+      console.error('Failed to parse exams from localStorage:', error);
+    }
+  }, []);
+
+  // Save exams to localStorage whenever exams state changes
+  useEffect(() => {
+    localStorage.setItem('exams', JSON.stringify(exams));
+  }, [exams]);
+
   const handleAddExam = () => {
-    if (newDeadline.trim() === '' || newDetails.trim() === '') return;
+    if (!newDeadline.trim() || !newDetails.trim()) {
+      alert('Please fill in all the fields.');
+      return;
+    }
 
     const newExam = {
       subject: newSubject,
@@ -40,9 +51,7 @@ const Exams = () => {
       status: 'Upcoming',
     };
 
-    const updatedExams = [...exams, newExam];
-    setExams(updatedExams);
-    localStorage.setItem('exams', JSON.stringify(updatedExams));
+    setExams((prevExams) => [...prevExams, newExam]);
     setNewDeadline('');
     setNewDetails('');
   };
@@ -50,22 +59,22 @@ const Exams = () => {
   const handleDeleteExam = (index) => {
     const updatedExams = exams.filter((_, i) => i !== index);
     setExams(updatedExams);
-    localStorage.setItem('exams', JSON.stringify(updatedExams));
   };
 
   const filteredExams = exams
-    .filter(exam => (filter ? exam.subject === filter : true))
-    .filter(exam => (search ? exam.details.toLowerCase().includes(search.toLowerCase()) : true))
-    .sort((a, b) => sortOrder === 'date'
-      ? new Date(a.deadline) - new Date(b.deadline)
-      : a.subject.localeCompare(b.subject)
+    .filter((exam) => (filter ? exam.subject === filter : true))
+    .filter((exam) => (search ? exam.details.toLowerCase().includes(search.toLowerCase()) : true))
+    .sort((a, b) =>
+      sortOrder === 'date'
+        ? new Date(a.deadline) - new Date(b.deadline)
+        : a.subject.localeCompare(b.subject)
     );
 
   return (
     <div className="exams-container">
       <header className="exams-header">
-        <button className="go-back-button" onClick={() => navigate(-1)}>
-          <i className="fas fa-arrow-left"></i>
+        <button className="custom-go-back-button" onClick={() => navigate(-1)}>
+          <i className="fas fa-arrow-left"></i> {/* Custom back button */}
         </button>
         <h1>Exams</h1>
       </header>

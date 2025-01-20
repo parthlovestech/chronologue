@@ -1,9 +1,15 @@
 /* General Styles */
-body {
+* {
   margin: 0;
-  font-family: 'Varela Round', sans-serif;
-  background-color: #f7f9fc;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #f7f7f7; /* Soft off-white background */
+  color: #2f2f2f; /* Dark grey text */
+  line-height: 1.6;
 }
 
 /* Container */
@@ -11,170 +17,228 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 60px 40px;
   max-width: 1200px;
   margin: 0 auto;
-  height: 100vh; /* Full viewport height */
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Header */
 .header {
-  flex-shrink: 0; /* Prevent header from shrinking */
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .header h1 {
-  font-size: 2.5rem;
+  font-size: 4rem;
+  color: #2f2f2f;
+  font-weight: 900;
   margin-bottom: 20px;
-  color: #343a40;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border-bottom: 3px solid #007bff; /* Blue underline */
+  border-bottom: 3px solid blue; /* Add border to header */
   padding-bottom: 10px;
-  text-align: center;
+}
+
+.header p {
+  font-size: 1.25rem;
+  color: #7a7a7a;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 /* Navbar */
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  flex-shrink: 0; /* Prevent navbar from shrinking */
+  gap: 50px;
+  margin-bottom: 60px;
+  border-bottom: 2px solid #e1e1e1; /* Underline navbar */
 }
 
 .nav-button {
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  border: 2px solid #007bff; /* Blue border */
-  color: #007bff; /* Blue text */
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 1rem;
+  background: transparent;
+  color: #2f2f2f;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 700;
   text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  border-radius: 5px; /* Slight border-radius for buttons */
+  border: 2px solid transparent; /* Default border color */
 }
 
 .nav-button:hover {
-  background-color: #007bff; /* Blue background on hover */
-  color: #ffffff; /* White text on hover */
-}
-
-.nav-button i {
-  margin-right: 8px;
-}
-
-/* Content */
-.content {
-  text-align: center;
-  flex: 1; /* Allow content to grow and fill available space */
-}
-
-.content h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #343a40;
-}
-
-.content p {
-  font-size: 1.2rem;
-  color: #555;
-  margin: 10px 0;
-}
-
-/* Motivational Section */
-.motivational-section {
-  background-color: #ffffff;
-  border: 1px solid #e2e6ea;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 15px 0;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  text-align: center;
-}
-
-.motivational-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #007bff; /* Blue text */
-}
-
-.motivational-section p {
-  font-size: 1.2rem;
-  color: #555;
-  margin: 0;
-  font-style: italic;
-}
-
-/* User Links */
-.user-links {
-  background-color: #ffffff;
-  border: 1px solid #e2e6ea;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 15px 0;
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  text-align: center;
-}
-
-.user-links h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #007bff; /* Blue text */
-}
-
-.user-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.user-links li {
-  margin-bottom: 10px;
-}
-
-.user-links a {
-  color: #007bff; /* Blue text */
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-.user-links a:hover {
-  text-decoration: underline;
-}
-
-/* Logout Button */
-.button-logout {
-  background-color: #dc3545; /* Red background */
-  color: #ffffff; /* White text */
-  border: none;
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 8px;
-  margin-top: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-.button-logout:hover {
-  background-color: #c82333; /* Darker red on hover */
-  color: #ffffff;
+  color: blue; /* Luxurious gold hover color */
   transform: scale(1.05);
 }
 
-/* Footer */
-.footer {
-  margin-top: auto; /* Push footer to the bottom */
-  padding: 30px;
+/* Hero Section */
+.hero-section {
   text-align: center;
-  font-size: 0.9rem;
-  color: #343a40;
+  margin-bottom: 80px;
 }
 
-.footer p {
-  margin: 0;
+.hero-section h2 {
+  font-size: 3.5rem;
+  color: #2f2f2f;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: #7a7a7a;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Card Layout */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.motivational-card,
+.quick-links-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid black; /* Left border to match header */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.motivational-card:hover,
+.quick-links-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+  border-left: 5px solid black; /* Darker border on hover */
+}
+
+.motivational-card h3,
+.quick-links-card h3 {
+  font-size: 2rem;
+  color: #2f2f2f;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.motivational-card p {
+  font-size: 1.2rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.quick-links-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-links-card li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.quick-links-card a {
+  text-decoration: none;
+  color: #2f2f2f;
+  transition: color 0.3s ease, border-bottom 0.3s ease; /* Add border transition */
+  border-bottom: 2px solid transparent; /* Add a subtle underline effect */
+  padding-bottom: 5px; /* Space for the underline */
+}
+
+.quick-links-card a:hover {
+  color: blue; /* Luxurious gold color on hover */
+  border-bottom: 2px solid blue; /* Gold underline on hover */
+}
+
+
+/* Logout Button */
+.button-logout {
+  background: #dc3545;
+  color: #ffffff;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.button-logout i {
+  margin-right: 10px;
+}
+
+.button-logout:hover {
+  background: #c82333;
+  transform: scale(1.05);
+  border-color: #c82333; /* Red border on hover */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .motivational-card,
+  .quick-links-card {
+    padding: 30px;
+  }
+
+  .navbar {
+    gap: 30px;
+  }
+}
+
+/* Sigma Slot */
+.sigma-slot {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid black; /* Left border for extra style */
+}
+
+.sigma-slot:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7; /* Light background on hover */
+}
+
+.sigma-slot h3 {
+  font-size: 1.8rem;
+  color: #2f2f2f;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.sigma-slot p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
 }

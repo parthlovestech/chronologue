@@ -1,150 +1,292 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Arial", sans-serif;
+}
+
+body {
+  background-color: #f8f8f7; /* Light gray background */
+  color: #333; /* Dark text for readability */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Container for the whole planner */
 .planner-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Header Section with Title and Back Button */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Back Button (with Font Awesome Icon) */
+.back-btn {
+  background: #0071e3;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn:hover {
+  background-color: #005bb5;
+}
+
+.back-btn i {
+  margin-left: 0; /* Remove margin from icon */
+  font-size: 1.5rem; /* Adjust icon size */
+}
+
+/* Optional: Add a small transition effect when hovering */
+.back-btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 113, 227, 0.3);
+}
+
+
+/* Form Section for Task Inputs */
+.task-input-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.task-input-container input,
+.task-input-container select,
+.task-input-container button {
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-input-container input:focus,
+.task-input-container select:focus,
+.task-input-container button:focus {
+  border-color: #0071e3;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 113, 227, 0.3);
+}
+
+/* Buttons */
+button {
+  background-color: #0071e3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+/* Task Section */
+.task-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task-table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.task-table h2 {
+  font-size: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  font-size: 1rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+th {
+  color: #0071e3;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Action buttons for Edit & Delete */
+.action-btns {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.action-btns button {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.edit {
+  background-color: #ffc107;
+}
+
+button.edit:hover {
+  background-color: #e0a800;
+}
+
+button.delete {
+  background-color: #dc3545;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}
+
+/* Priority color */
+td.priority {
+  font-weight: bold;
+}
+
+td.priority.low {
+  color: #28a745;
+}
+
+td.priority.medium {
+  color: #ffc107;
+}
+
+td.priority.high {
+  color: #dc3545;
+}
+
+/* Filter Input */
+.filter-input {
+  margin-bottom: 30px;
+  padding: 15px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.filter-input:focus {
+  border-color: #0071e3;
+}
+
+/* Flexbox Layout for Task List and Form */
+.task-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  overflow-y: auto;
+}
+
+.task-table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .task-input-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .task-input-container input,
-  .task-input-container select {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+
+  .task-list-container {
+    gap: 20px;
   }
-  
-  .task-input-container button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    flex: 0;
+
+  .task-table-container {
+    gap: 20px;
   }
-  
-  .task-input-container button:hover {
-    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .task-input-container {
+    grid-template-columns: 1fr;
   }
-  
-  .filter-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+
+  .task-table h2 {
+    font-size: 1.25rem;
   }
-  
-  .tasks-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+  table {
+    font-size: 0.9rem;
   }
-  
-  .task-item {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .task-item.completed {
-    background-color: #e0ffe0;
-  }
-  
-  .task-details {
-    margin-bottom: 10px;
-  }
-  
-  .task-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-  }
-  
-  .task-actions button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .complete-button {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .complete-button:hover {
-    background-color: #218838;
-  }
-  
-  .edit-button {
-    background-color: #ffc107;
-    color: white;
-  }
-  
-  .edit-button:hover {
-    background-color: #e0a800;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .delete-button:hover {
-    background-color: #c82333;
-  }
-  
-  .edit-task {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .save-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .save-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .go-back-button {
-    background-color: red;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .go-back-button:hover {
-    background-color: #e0e0e0;
-  }
-  
+}

@@ -1,72 +1,103 @@
 import React, { useState } from 'react';
-import { Bar } from 'react-chartjs-2'; // Import the Bar chart
+import { Bar } from 'react-chartjs-2';
+import jsPDF from 'jspdf'; // Import jsPDF for PDF generation
 import 'chart.js/auto'; // Import necessary chart components
-import './Expense.css'; // Import the CSS file for styling
+import './Expense.css';
 
 const Expense = () => {
   const [expenses, setExpenses] = useState([]);
   const [newExpense, setNewExpense] = useState('');
   const [newAmount, setNewAmount] = useState('');
   const [newDate, setNewDate] = useState('');
-  const [sortOrder, setSortOrder] = useState('date');
-  const [calculatorInput, setCalculatorInput] = useState('');
-  const [calculatorResult, setCalculatorResult] = useState('');
+  const [balance, setBalance] = useState(0); // User's balance
 
   const handleAddExpense = () => {
     if (newExpense.trim() === '' || newAmount.trim() === '' || newDate.trim() === '') return;
 
+    const expenseAmount = parseFloat(newAmount);
     const newExpenseItem = {
       description: newExpense,
-      amount: parseFloat(newAmount),
+      amount: expenseAmount,
       date: new Date(newDate),
     };
 
     const updatedExpenses = [...expenses, newExpenseItem];
     setExpenses(updatedExpenses);
+    setBalance((prevBalance) => prevBalance - expenseAmount);
     setNewExpense('');
     setNewAmount('');
-    setNewDate(''); // Clear the date input
+    setNewDate('');
   };
 
-  const handleSort = (order) => {
-    setSortOrder(order);
+  // Function to generate PDF report
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.setFont('Helvetica');
+    doc.setFontSize(16);
+
+    // Add title
+    doc.text('Expense Report', 20, 20);
+
+    // Add balance info
+    doc.setFontSize(12);
+    doc.text(`Current Balance: $${balance.toFixed(2)}`, 20, 30);
+
+    // Add table header
+    doc.text('Date', 20, 40);
+    doc.text('Description', 60, 40);
+    doc.text('Amount', 120, 40);
+
+    // Add expenses data
+    let y = 50; // Start position for expenses
+    expenses.forEach((expense) => {
+      doc.text(expense.date.toLocaleDateString(), 20, y);
+      doc.text(expense.description, 60, y);
+      doc.text(`-$${expense.amount.toFixed(2)}`, 120, y);
+      y += 10; // Adjust position for the next row
+    });
+
+    // Download the PDF
+    doc.save('expense_report.pdf');
   };
 
-  const handleCalculate = () => {
-    try {
-      setCalculatorResult(eval(calculatorInput)); // Simple calculator
-    } catch (e) {
-      setCalculatorResult('Error');
-    }
-  };
-
-  const sortedExpenses = expenses.sort((a, b) => 
-    sortOrder === 'date' 
-      ? new Date(b.date) - new Date(a.date)
-      : b.amount - a.amount
-  );
-
-  const chartData = {
-    labels: sortedExpenses.map(exp => exp.date.toLocaleDateString()), // Use date for labels
-    datasets: [{
-      label: 'Expenses',
-      data: sortedExpenses.map(exp => exp.amount),
-      backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      borderColor: 'rgba(75, 192, 192, 1)',
-      borderWidth: 1,
-    }],
+  // Back button handler
+  const handleBack = () => {
+    window.history.back(); // Navigate back to the previous page
   };
 
   return (
     <div className="expense-container">
+      {/* Back Button */}
+      <button className="back-go-button" onClick={handleBack}>
+        <i className="fas fa-arrow-left"></i>
+      </button>
+
       <header className="expense-header">
-        <button className="back-go-button" onClick={() => window.history.back()}>
-          <i className="fas fa-arrow-left"></i>
-        </button>
-        <h1>Expense Tracker</h1>
+        <h1>Financial Overview</h1>
       </header>
 
+      <div className="balance-overview">
+        <div className="balance-header">
+          <h2>Account Summary</h2>
+        </div>
+        <div className="balance-details">
+          <div className="balance-item">
+            <span>Current Balance:</span>
+            <span className={`balance-amount ${balance >= 0 ? 'positive' : 'negative'}`}>
+              ${balance.toFixed(2)}
+            </span>
+          </div>
+          <input
+            type="number"
+            placeholder="Set Initial Balance"
+            onChange={(e) => setBalance(parseFloat(e.target.value) || 0)}
+            className="balance-input"
+          />
+        </div>
+      </div>
+
       <div className="expense-inputs">
+        <h3>Add a Transaction</h3>
         <input
           type="text"
           placeholder="Expense Description"
@@ -84,53 +115,50 @@ const Expense = () => {
           value={newDate}
           onChange={(e) => setNewDate(e.target.value)}
         />
-        <button onClick={handleAddExpense}>Add Expense</button>
-      </div>
-
-      <div className="expense-sorting">
-        <select
-          value={sortOrder}
-          onChange={(e) => handleSort(e.target.value)}
-        >
-          <option value="date">Sort by Date</option>
-          <option value="amount">Sort by Amount</option>
-        </select>
+        <button onClick={handleAddExpense}>Add Transaction</button>
       </div>
 
       <div className="expense-chart">
+        <h3>Spending Overview</h3>
         <Bar
-          data={chartData}
-          options={{
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
+          data={{
+            labels: expenses.map(exp => exp.date.toLocaleDateString()),
+            datasets: [{
+              label: 'Expenses',
+              data: expenses.map(exp => exp.amount),
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+            }],
           }}
+          options={{ scales: { y: { beginAtZero: true } } }}
         />
       </div>
 
+      <div className="expense-sorting">
+        <h3>Sort Transactions</h3>
+        <button onClick={generatePDF}>Download Report (PDF)</button>
+      </div>
+
       <div className="expense-list">
-        {sortedExpenses.length > 0 ? (
-          sortedExpenses.map((exp, index) => (
+        <h3>Transaction History</h3>
+        {expenses.length > 0 ? (
+          expenses.map((exp, index) => (
             <div key={index} className="expense-card">
-              <div className="table-row">
-                <div className="table-cell description">
-                  <h3>{exp.description}</h3>
-                </div>
-                <div className="table-cell amount-date">
-                  <p className="amount">${exp.amount.toFixed(2)}</p>
-                  <p className="date">{exp.date.toLocaleDateString()}</p>
-                </div>
+              <div className="transaction-details">
+                <span className="transaction-desc">{exp.description}</span>
+                <span className="transaction-date">{exp.date.toLocaleDateString()}</span>
+              </div>
+              <div className={`transaction-amount ${exp.amount < 0 ? 'negative' : 'positive'}`}>
+                <span>{exp.amount < 0 ? `-$${Math.abs(exp.amount).toFixed(2)}` : `$${exp.amount.toFixed(2)}`}</span>
               </div>
             </div>
           ))
         ) : (
-          <p>No expenses found.</p>
+          <p className="no-transactions">No transactions recorded.</p>
         )}
       </div>
 
-      
     </div>
   );
 };
